@@ -1,0 +1,21 @@
+def mintime(cust,regs):
+    size_cust=len(cust)
+    ans=0
+    if regs==1:
+        ans=sum(cust)
+        return ans
+    elif regs>=size_cust:
+        return ans
+    else:
+        stack=[]
+        for i in range(regs):
+            stack.append(cust[i])
+        for i in range (regs,size_cust):
+            min_val=min(stack)
+            min_index=stack.index(min_val)
+            stack[min_index] = stack[min_index]+cust[i]
+        max_value=max(stack)
+        return max_value
+cust=[5,1,2,3]
+regs=1
+print (mintime(cust,regs))
